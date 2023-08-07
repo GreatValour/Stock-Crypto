@@ -4,9 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $Cpassword = $_POST['Cpassword'];
     $phone = $_POST['phone'];
-    $country = $_POST['country'];
 
     // Database connection
     $conn = new mysqli('localhost', 'root', 'VD7gLh(8e)Q(4m)7', 'test_now'); // Make sure to use the correct database name here
