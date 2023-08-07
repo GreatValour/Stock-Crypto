@@ -150,6 +150,34 @@
 	<!-- Template JS Files -->
 	<script src="js/jquery-2.2.4.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+
+	<script>
+		// Function to get the stored user data from Local Storage
+		function getUserDataFromLocalStorage() {
+		  const userDataJSON = localStorage.getItem('user');
+		  if (userDataJSON) {
+			return JSON.parse(userDataJSON);
+		  }
+		  return null;
+		}
+	  
+		// Function to update the login form fields with user data, if available
+		function updateLoginFormWithUserData() {
+		  const userData = getUserDataFromLocalStorage();
+		  if (userData) {
+			const usernameInput = document.getElementById('username');
+			const passwordInput = document.getElementById('password');
+	  
+			// Fill the form fields with the stored user data
+			usernameInput.value = userData.username || '';
+			passwordInput.value = userData.password || '';
+		  }
+		}
+	  
+		// Call the function to update the login form with user data
+		updateLoginFormWithUserData();
+	  </script>
+	  
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 	var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
