@@ -52,6 +52,9 @@
   <link rel="alternate stylesheet" type="text/css" title="blue" href="css/skins/blue.css" />
   <link rel="stylesheet" type="text/css" href="css/styleswitcher.css" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+  <!-- Add this in the <head> section of your HTML -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 
   <!-- Template JS Files -->
@@ -497,8 +500,34 @@
     </div>
   </div>
   <!-- Wrapper Ends -->
-  <script src="custom.js" type="text/javascript"></script>
-
+  <script>
+    $(document).ready(function() {
+      // Submit form using AJAX
+      $('form').submit(function(event) {
+        event.preventDefault(); // Prevent default form submission behavior
+  
+        // Serialize form data
+        var formData = $(this).serialize();
+  
+        // Send AJAX request to the server
+        $.ajax({
+          type: "POST",
+          url: "data.php", // Replace with the actual filename of your PHP script
+          data: formData,
+          success: function(response) {
+            // Handle the response from the server
+            alert(response); // For simplicity, we'll just show an alert with the server's response
+            // You can update the page, display success messages, or redirect the user, etc.
+          },
+          error: function(xhr, status, error) {
+            // Handle errors (optional)
+            console.error("Error: " + error);
+          }
+        });
+      });
+    });
+  </script>
+  
 
  <!-- Template JS Files -->
 <script src="js/jquery-2.2.4.min.js"></script>
