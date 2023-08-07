@@ -486,7 +486,7 @@
               <!-- Check Input Ends -->
 
               <!-- Submit Form Button Starts -->
-              <button type="button" name="sub" class="btn btn-primary btn-block" id="btn-regg">create account</button>
+              <button type="button" class="btn btn-primary btn-block" id="btn-create-account">Create Account</button>
 
    
               <p style="">Already have an account ? <a href="login.php.html"> Login</a>
@@ -504,14 +504,15 @@
       </div>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
   <!-- Wrapper Ends -->
   <script>
     // Add click event listener to the button
-    document.getElementById('btn-regg').addEventListener('click', function() {
-      // Manually trigger the form submission when the button is clicked
-      const registerForm = document.getElementById('signup_form');
-      handleFormSubmission(new Event('submit', { cancelable: true, target: registerForm }));
-    });
+    document.getElementById('btn-create-account').addEventListener('click', function() {
+    // Manually trigger the form submission when the button is clicked
+    const event = new Event('submit', { cancelable: true, target: document.getElementById('signup_form') });
+    handleFormSubmission(event);
+  });
   </script>
  <!-- Template JS Files -->
 <script src="js/jquery-2.2.4.min.js"></script>
