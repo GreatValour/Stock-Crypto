@@ -510,30 +510,6 @@
 <script src="js/jquery-2.2.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<script>
-  // Function to handle form submission
-  function handleFormSubmission(event) {
-    event.preventDefault();
-
-    // Get form data
-    const formData = new FormData(event.target);
-    const userData = {};
-    formData.forEach((value, key) => {
-      userData[key] = value;
-    });
-
-    // Store user data in localStorage
-    localStorage.setItem('user', JSON.stringify(userData));
-
-    // Redirect to the dashboard page
-    window.location.href = 'dashboard.html';
-  }
-
-  // Add event listener to the form submit button
-  const registerForm = document.getElementById('signup_form');
-  registerForm.addEventListener('submit', handleFormSubmission);
-</script>
-
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
