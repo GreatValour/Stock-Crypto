@@ -1,0 +1,55 @@
+// Function to handle form submission
+function handleFormSubmission(event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  // Get the form element
+  const form = document.getElementById('signup_form');
+
+  // Perform form validation (you can add more validation checks here)
+  // ... (same as before)
+
+  // If form validation passes, proceed with form submission
+  // You can use an AJAX request to send the data to the server
+  // Example AJAX request (using fetch API)
+  fetch('data.php', {
+    method: 'POST',
+    body: new FormData(form) // Send the form data as multipart/form-data
+  })
+    .then(response => response.text())
+    .then(data => {
+      // Handle the response from the server
+      if (data.includes('Registration Successful!')) {
+        // Registration successful
+        Swal.fire({
+          title: 'Registration Successful!',
+          text: 'Your account has been created successfully.',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+        // Clear the form after successful registration
+        form.reset();
+      } else {
+        // Registration failed
+        Swal.fire({
+          title: 'Error',
+          text: 'Registration failed. Please try again later.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
+    })
+    .catch(error => {
+      // Handle any error that occurred during the request
+      console.error('Error:', error);
+      Swal.fire({
+        title: 'Error',
+        text: 'An error occurred while submitting the form. Please try again later.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    });
+}
+
+// Add click event listener to the button
+document.getElementById('btn-create-account').addEventListener('click', handleFormSubmission);
