@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <!--Your Request Have been submitted Successfully. Kindly complete your deposit by sending $100 in Bitcoin to the Company Wallet Address: bc1q4ulxs9dk5au0ayux67t52regyftxrsdg7kz2vf-->
@@ -10,27 +9,136 @@
     <link rel="icon" href="favicon.png" type="image/x-icon">
     <meta name="description" content="">
     <meta name="author" content="">
-<script src="jquery-3.4.1.min.js"></script>
+    <script src="jquery-3.4.1.min.js"></script>
     <title>Tradecryptomaxfxt Platform | Dashboard</title>
-<link rel="stylesheet" href="sweetalert.css" /><script src="sweetalert-dev.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="sweetalert.css" />
+    <script src="sweetalert-dev.js" type="text/javascript"></script>
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="user/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="user/css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="others.css">
+    <link rel="stylesheet" href="user/others.css">
     <style>
         .img-mobile {
             width: 150px
         }
+
         @media only screen and (max-width: 600px) {
-  .img-mobile {
-            width: 80px
+            .img-mobile {
+                width: 80px
+            }
         }
-}
+
+        <style> #wallet-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #wallet-input {
+            display: inline-block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .copy-button {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #0a0dad;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        #btc-copy-button {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #0a0dad;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        #bnb-copy-button {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #0a0dad;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        #usdt-copy-button {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #0a0dad;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        #eth-copy-button {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #0a0dad;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        #bch-copy-button {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #0a0dad;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        #doge-copy-button {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #0a0dad;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        #trx-copy-button {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #0a0dad;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        #ltc-copy-button {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #0a0dad;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+
     </style>
 </head>
 
@@ -45,7 +153,8 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon">
-                    <img src="../assets/img/logo.png" class="img-mobile" style="height:40px;width:40px;object-fit:contain" />
+                    <img src="../assets/img/logo.png" class="img-mobile"
+                        style="height:40px;width:40px;object-fit:contain" />
                 </div>
             </a>
 
@@ -58,29 +167,29 @@
                     <i class="fa fa-user"></i>
                     <span>Dashboard</span></a>
             </li>
-            <li class="nav-item"> 
+            <li class="nav-item">
                 <a class="nav-link" href="kyc.php" style="color: goldenrod;">
                     <i class="fa fa-credit-card"></i>
                     <span>Verify Account*</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
-            <li class="nav-item"> 
+            <li class="nav-item">
                 <a class="nav-link" href="deposit-funds.php" style="color: white;">
                     <i class="fa fa-upload"></i>
                     <span>Deposit Funds</span></a>
             </li>
-            <li class="nav-item"> 
+            <li class="nav-item">
                 <a class="nav-link" href="withdraw-funds.php" style="color: white;">
                     <i class="fa fa-download"></i>
                     <span>Withdraw Funds</span></a>
             </li>
-             <li class="nav-item"> 
+            <li class="nav-item">
                 <a class="nav-link" href="withdrawalhistory.php" style="color: white;">
                     <i class="fa fa-download"></i>
                     <span>Withdrawal History</span></a>
             </li>
-            <li class="nav-item"> 
+            <li class="nav-item">
                 <a class="nav-link" href="transaction-log.php" style="color: white;">
                     <i class="fa fa-repeat"></i>
                     <span>Transaction Log</span></a>
@@ -108,48 +217,48 @@
             </li>-->
             <!-- Divider -->
             <hr class="sidebar-divider">
-            
-           
+
+
             <!--
             <li class="nav-item"> 
                 <a class="nav-link" href="mining.php">
                     <i class="fa fa-chart-line"></i>
                     <span>Mining Plans</span></a>
             </li>-->
-            
+
             <!--<li class="nav-item"> 
                 <a class="nav-link" href="earnings.php">
                     <i class="fa fa-money"></i>
                     <span>Earnings</span></a>
             </li>-->
-            
-            <li class="nav-item"> 
+
+            <li class="nav-item">
                 <a class="nav-link" href="notification.php">
                     <i class="fa fa-envelope"></i>
                     <span>Notifications</span></a>
             </li>
-            <li class="nav-item"> 
+            <li class="nav-item">
                 <a class="nav-link" href="support-ticket.php">
                     <i class="fa fa-ticket"></i>
                     <span>Support Ticket</span></a>
             </li>
-            <li class="nav-item"> 
+            <li class="nav-item">
                 <a class="nav-link" href="downlines.php">
                     <i class="fa fa-users"></i>
                     <span>Referrals</span></a>
             </li>
-            <li class="nav-item"> 
+            <li class="nav-item">
                 <a class="nav-link" href="edit-profile.php">
                     <i class="fa fa-upload"></i>
                     <span>Profile</span></a>
             </li>
-            <li class="nav-item"> 
+            <li class="nav-item">
                 <a class="nav-link" href="logout.php">
                     <i class="fa fa-sign-out"></i>
                     <span>Logout</span></a>
             </li>
 
-                
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -158,9 +267,9 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-        
 
-        </ul>        <!-- End of Sidebar -->
+
+        </ul> <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -176,25 +285,26 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-            
+
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                      
+
 
                         <!-- Nav Item - Alerts -->
                         <div id="google_translate_element"></div>
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-}
-</script>
+                        <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+                            }
+                        </script>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        <script type="text/javascript"
+                            src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-                    <div class="topbar-divider d-none d-sm-block"></div>
-                    
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="notification.php">
@@ -211,9 +321,9 @@ function googleTranslateElementInit() {
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">jeremyfurr@borrowwave.com</span>
-                                <img class="img-profile rounded-circle"
-                                    src="upload/nopics.png">
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small">jeremyfurr@borrowwave.com</span>
+                                <img class="img-profile rounded-circle" src="upload/nopics.png">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -231,7 +341,8 @@ function googleTranslateElementInit() {
                                     Transaction Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="logout.php" data-toggle="modal"
+                                    data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -240,397 +351,505 @@ function googleTranslateElementInit() {
 
                     </ul>
 
-                </nav>                <!-- End of Topbar -->
-<div class="container-fluid">
-    
-    <div class="row">
-        
-        <!-- Area Chart -->
-        <div class="col-xl-8 col-lg-7">
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Deposit Funds</h6>
+                </nav> <!-- End of Topbar -->
+                <div class="container-fluid">
 
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                                        <p>
-<script type="text/javascript">
-$(document).ready(function(){
-    $("#proform").on('submit', function(ee){
-ee.preventDefault();
-  $.ajax({
-            url: "pages/processsdepositc.php",
-            type: "POST",
-            data: new FormData(this),
-            contentType: false,
-            cache: false,
-            processData:false,
-            beforeSend: function(data){ $(".showinvestpro2").html('<img src="images/ajax-loader.gif" style="width:24px" />'); },
-            success: function(data){
-                $(".showinvestpro2").show();
-            $(".showinvestpro2").html(data);
-            
-            $(".moreinvestpro2").remove();
-            },
-            error: function(){}             
-       });
-       });
-});
-   </script>
+                    <div class="row">
 
-                        <form method="post" action="" id="proform">
-                            <div class="form-group">
-                                <input type="number" name="amount" class="form-control form-control-user" placeholder="Enter Amount" required>
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Deposit Funds</h6>
+
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <p>
+                                        <script type="text/javascript">
+                                            $(document).ready(function () {
+                                                $("#proform").on('submit', function (ee) {
+                                                    ee.preventDefault();
+                                                    $.ajax({
+                                                        url: "pages/processsdepositc.php",
+                                                        type: "POST",
+                                                        data: new FormData(this),
+                                                        contentType: false,
+                                                        cache: false,
+                                                        processData: false,
+                                                        beforeSend: function (data) { $(".showinvestpro2").html('<img src="images/ajax-loader.gif" style="width:24px" />'); },
+                                                        success: function (data) {
+                                                            $(".showinvestpro2").show();
+                                                            $(".showinvestpro2").html(data);
+
+                                                            $(".moreinvestpro2").remove();
+                                                        },
+                                                        error: function () { }
+                                                    });
+                                                });
+                                            });
+                                        </script>
+
+                                    <form method="post" action="" id="proform">
+                                        <div class="form-group">
+                                            <input type="number" name="amount" class="form-control form-control-user"
+                                                placeholder="Enter Amount" required>
+                                        </div>
+
+                                        <label>Select Method</label>
+                                        <div class="form-group">
+                                            <select name="walletstype" onchange="showDiv(this)"
+                                                class="form-control form-control-user" required>
+                                                <option value="">Select</option>
+                                                <option value="Bitcoin">Bitcoin (BTC)</option>
+                                                <option value="Ethereum">Ethereum (ETH-ERC20)</option>
+                                                <option value="Bitcoin Cash">Bitcoin Cash (BCH)</option>
+                                                <option value="USDT">USDT (ERC20)</option>
+                                                <option value="BNB">BNB(ERC20)</option>
+                                                <option value="Dogecoin">Dogecoin</option>
+                                                <option value="Tron">Tron</option>
+                                                <option value="Litcoin">Litcoin (LTC)</option>
+
+                                            </select>
+
+                                        </div>
+
+
+                                        <label>Select Investment Plan</label>
+                                        <div class="form-group">
+                                            <select name="plan" class="form-control form-control-user">
+                                                <option>Basic</option>
+                                                <option>Premium</option>
+                                                <option>Gold</option>
+                                                <option>Platinum</option>
+                                                <option>Topaz</option>
+                                                <option>Ruby</option>
+                                                <option>Emerald</option>
+
+                                            </select>
+
+                                        </div>
+
+
+
+                                        </p>
+
+                                        <p>You are provided with a very convenient method of depositing using Bitcoin.
+                                            Upon your first deposit or transfer to the crypto-transaction section, a
+                                            single BTC address is created and fixed for you.</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Copy Wallet Address</h6>
+
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div id="btc" style="display: none">
+                                        <p>Scan The Barcode to make deposit or copy the wallet address below</p>
+                                        <div align="center">
+                                            <img src="https://api.qrserver.com/v1/create-qr-code/?data=bc1q24v8l4wk3fes68xt35p573v83zed8dqfqzh6lk&amp;size=200x200"
+                                                alt="Wallet Barcode" title="Wallet Barcode" /><br /><br />
+                                            <div id="wallet-container">
+                                                <input type="text" id="btc-wallet-input"
+                                                    value="bc1q24v8l4wk3fes68xt35p573v83zed8dqfqzh6lk" readonly>
+                                                    <button type="button" id="btc-copy-button">Copy Address</button>
+                                                <span id="btc-copy-status" style="display: none; color: green;">Address
+                                                    Copied!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="bnb" style="display: none">
+                                        <p>Scan The Barcode to make deposit or copy the wallet address below</p>
+                                        <div align="center">
+                                            <img src="https://api.qrserver.com/v1/create-qr-code/?data=0x9cf4330960b45bb7b0cc1c841de5bed2dd49937e&amp;size=200x200"
+                                                alt="Wallet Barcode" title="Wallet Barcode" /><br /><br />
+                                            <div id="wallet-container">
+                                                <input type="text" id="bnb-wallet-input"
+                                                    value="0x9cf4330960b45bb7b0cc1c841de5bed2dd49937e" readonly>
+                                                    <button type="button" id="bnb-copy-button">Copy Address</button>
+                                                <span id="bnb-copy-status" style="display: none; color: green;">Address
+                                                    Copied!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="usdt" style="display: none">
+                                        <p>Scan The Barcode to make a deposit or copy the wallet address below</p>
+                                        <div align="center">
+                                            <img src="https://api.qrserver.com/v1/create-qr-code/?data=0x35408cF82a16f4aD59dfDA1610AC16d346c76bC6&amp;size=200x200"
+                                                alt="Wallet Barcode" title="Wallet Barcode" /><br /><br />
+                                            <div id="wallet-container">
+                                                <input type="text" id="usdt-wallet-input" value="0x35408cF82a16f4aD59dfDA1610AC16d346c76bC6"
+                                                    readonly>
+                                                    <button type="button" id="usdt-copy-button">Copy Address</button>
+                                                <span id="usdt-copy-status" style="display: none; color: green;">Address
+                                                    Copied!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="eth" style="display: none">
+                                        <p>Scan The Barcode to make deposit or copy the wallet address below</p>
+                                        <div align="center">
+                                            <img src="https://api.qrserver.com/v1/create-qr-code/?data=0x35408cF82a16f4aD59dfDA1610AC16d346c76bC6&amp;size=200x200"
+                                                alt="Wallet Barcode" title="Wallet Barcode" /><br /><br />
+                                            <div id="wallet-container">
+                                                <input type="text" id="eth-wallet-input"
+                                                    value="0x35408cF82a16f4aD59dfDA1610AC16d346c76bC6" readonly>
+                                                    <button type="button" id="eth-copy-button">Copy Address</button>
+                                                <span id="eth-copy-status" style="display: none; color: green;">Address
+                                                    Copied!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="bch" style="display: none">
+                                        <p>Scan The Barcode to make deposit or copy the wallet address below</p>
+                                        <div align="center">
+                                            <img src="https://api.qrserver.com/v1/create-qr-code/?data=qz29va494celfwamnrlxzy9suqd7fkz2qchs73hxpw&amp;size=200x200"
+                                                alt="Wallet Barcode" title="Wallet Barcode" /><br /><br />
+                                            <div id="wallet-container">
+                                                <input type="text" id="bch-wallet-input"
+                                                    value="YOUR_BITCOIN_CASH_ADDRESS_HERE" readonly>
+                                                    <button type="button" id="bch-copy-button">Copy Address</button>
+                                                <span id="bch-copy-status" style="display: none; color: green;">Address
+                                                    Copied!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="doge" style="display: none">
+                                        <p>Scan The Barcode to make deposit or copy the wallet address below</p>
+                                        <div align="center">
+                                            <img src="https://api.qrserver.com/v1/create-qr-code/?data=D84Tk49VDSmXio5wL8C2fwtof7eTuVjtoy&amp;size=200x200"
+                                                alt="Wallet Barcode" title="Wallet Barcode" /><br /><br />
+                                            <div id="wallet-container">
+                                                <input type="text" id="doge-wallet-input"
+                                                    value="D84Tk49VDSmXio5wL8C2fwtof7eTuVjtoy" readonly>
+                                                    <button type="button" id="doge-copy-button">Copy Address</button>
+                                                <span id="doge-copy-status" style="display: none; color: green;">Address
+                                                    Copied!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="trx" style="display: none">
+                                        <p>Scan The Barcode to make deposit or copy the wallet address below</p>
+                                        <div align="center">
+                                            <img src="https://api.qrserver.com/v1/create-qr-code/?data=&amp;size=200x200"
+                                                alt="Wallet Barcode" title="Wallet Barcode" /><br /><br />
+                                            <div id="wallet-container">
+                                                <input type="text" id="trx-wallet-input" value="YOUR_TRON_ADDRESS_HERE"
+                                                    readonly>
+                                                    <button type="button" id="trx-copy-button">Copy Address</button>
+                                                <span id="trx-copy-status" style="display: none; color: green;">Address
+                                                    Copied!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="ltc" style="display: none">
+                                        <p>Scan The Barcode to make deposit or copy the wallet address below</p>
+                                        <div align="center">
+                                            <img src="https://api.qrserver.com/v1/create-qr-code/?data=LSNhogRUFjq66PcqjpPCiN7rTdFQengYfk&amp;size=200x200"
+                                                alt="Wallet Barcode" title="Wallet Barcode" /><br /><br />
+                                            <div id="wallet-container">
+                                                <input type="text" id="ltc-wallet-input"
+                                                    value="LSNhogRUFjq66PcqjpPCiN7rTdFQengYfk" readonly>
+                                                    <button type="button" id="ltc-copy-button">Copy Address</button>
+                                                <span id="ltc-copy-status" style="display: none; color: green;">Address
+                                                    Copied!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="pm" style="display: none">
+                                        <p>Copy any the wallet address below</p>
+
+                                        <p style="color: #160377; font-weight: 700;">
+                                            USD: U25184079 </p>
+                                        <p style="color: #160377; font-weight: 700;">
+                                            EURO: E26753958 </p>
+                                        <p style="color: #160377; font-weight: 700;">
+                                            BTC: </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <center>
+                                            <div class="showinvestpro2"></div>
+
+
+                                            </form>
+                                            <!-- Card Header - Dropdown -->
+                                            <hr>
+                                            <br>
+                                            <center>
+                                                <div class="align-items-center">
+                                                    <h4 class="m-0 font-weight-bold text-primary"><a
+                                                            href="kyc.php">Upload
+                                                            Payment Proof</a></h4>
+                                                </div>
+                                            </center>
+                                    </div>
+
+                                </div>
+                                <!--End-Action boxes-->
                             </div>
 
-                            <label>Select Method</label>
-                            <div class="form-group">
-                                <select name="walletstype" onchange="showDiv(this)" class="form-control form-control-user" required>
-                                    <option value="">Select</option>
-                                    <option value="Bitcoin">Bitcoin (BTC)</option>
-                                    <option value="Ethereum">Ethereum (ETH)</option>
-                                    <option value="Bitcoin Cash">Bitcoin Cash (BCH)</option>
-					<!--				 <option value="USDT">USDT</option>
-									  <option value="BNB">BNB</option>-->
-                                    <!--<option value="Dogecoin">Dogecoin</option>
-                                    <option value="Tron">Tron</option>
-                                    --><option value="Litcoin">Litcoin (LTC)</option>
+                        </div>
+                    </div>
 
-                                </select>
-
-                            </div>
-                            
-                            
-                            <label>Select Investment Plan</label>
-                            <div class="form-group">
-                                <select name="plan" class="form-control form-control-user">
-                                   <option>Basic</option>
-                                    <option>Premium</option>
-                                    <option>Gold</option>
-                                     <option>Platinum</option>
-                                    <!--<option>Topaz</option>
-                                    <option>Ruby</option>
-                                    <option>Emerald</option>-->
-
-                                </select>
-
-                            </div>
-
-
-
-                    </p>
-
-                    <p>You are provided with a very convenient method of depositing using Bitcoin. Upon your first deposit or transfer to the crypto-transaction section, a single BTC address is created and fixed for you.</p>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Pie Chart -->
-        <div class="col-xl-4 col-lg-5">
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Copy Wallet Address</h6>
 
                 </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div id="btc" style="display: none">
-                        <p>Scan The Barcode to make deposit or copy the wallet address below</p>
-                        <p>
-                            <div align="center"><!--<img src="https://api.qrserver.com/v1/create-qr-code/?data=bc1qa60zn9aa20rtd8lrd9qcvmf3k6hu0x87zw0hqd&amp;size=200x200" alt="Wallet Barcode" title="Wallet Barcode"/>--><br /><br />
-                            
-                            <p style="color: #160377; font-weight: 700;">
-                         For Creating any Deposit Kindly Contact your Trading Account Manager                       </p>
-                                </div>
-                    </div>
-					
-					 <div id="bnb" style="display: none">
-                        <p>Scan The Barcode to make deposit or copy the wallet address below</p>
-                        <p>
-                            <div align="center"><!--<img src="https://api.qrserver.com/v1/create-qr-code/?data=bnb13s7vqnxe62asvactyly3mudts648swfvrf3pyr&amp;size=200x200" alt="Wallet Barcode" title="Wallet Barcode"/>-->
-                            <br /><br />
-                            <p style="color: #160377; font-weight: 700;">
-                               For Creating any Deposit Kindly Contact your Trading Account Manager                          </p>
-                                </div>
-                    </div>
-					
-					 <div id="usdt" style="display: none">
-                        <p>Scan The Barcode to make deposit or copy the wallet address below</p>
-                        <p>
-                            <div align="center"><img src="https://api.qrserver.com/v1/create-qr-code/?data=0x717e89C69359a0787467449880Ab0D39EDef5a9F&amp;size=200x200" alt="Wallet Barcode" title="Wallet Barcode"/>
-                            
-                            <p style="color: #160377; font-weight: 700;">
-                                0x717e89C69359a0787467449880Ab0D39EDef5a9F                            </p>
-                                </div>
-                    </div>
-					
-                    <div id="eth" style="display: none">
-                        <p>Scan The Barcode to make deposit or copy the wallet address below</p>
-                        <p>
-                            <div align="center"><!--<img src="https://api.qrserver.com/v1/create-qr-code/?data=0x63a645B094Ab9FC37001D8Cddfc19226bdDB4E6a&amp;size=200x200" alt="Wallet Barcode" title="Wallet Barcode"/>--><br /><br />
-                            
-                            <p style="color: #160377; font-weight: 700;">
-                              For Creating any Deposit Kindly Contact your Trading Account Manager               </p>
-                                </div>
-                    </div>
-                    <div id="bch" style="display: none">
-                        <p>Scan The Barcode to make deposit or copy the wallet address below</p>
-                        <p>
-                            <div align="center"><!--<img src="https://api.qrserver.com/v1/create-qr-code/?data=qz29va494celfwamnrlxzy9suqd7fkz2qchs73hxpw&amp;size=200x200" alt="Wallet Barcode" title="Wallet Barcode"/>--><br /><br />
-                            
-                            <p style="color: #160377; font-weight: 700;">
-                                For Creating any Deposit Kindly Contact your Trading Account Manager                 </p>
-                                </div>
-                    </div>
-                    <div id="doge" style="display: none">
-                        <p>Scan The Barcode to make deposit or copy the wallet address below</p>
-                        <p>
-                            <div align="center"><img src="https://api.qrserver.com/v1/create-qr-code/?data=&amp;size=200x200" alt="Wallet Barcode" title="Wallet Barcode"/>
-                            
-                            <p style="color: #160377; font-weight: 700;">
-                                                            </p>
-                                </div>
-                    </div>
-                    <div id="trx" style="display: none">
-                        <p>Scan The Barcode to make deposit or copy the wallet address below</p>
-                        <p>
-                            <div align="center"><img src="https://api.qrserver.com/v1/create-qr-code/?data=&amp;size=200x200" alt="Wallet Barcode" title="Wallet Barcode"/>
-                            
-                            <p style="color: #160377; font-weight: 700;">
-                                                            </p>
-                                </div>
-                    </div>
-                    <div id="ltc" style="display: none">
-                        <p>Scan The Barcode to make deposit or copy the wallet address below</p>
-                        <p>
-                            <div align="center"><!--<img src="https://api.qrserver.com/v1/create-qr-code/?data=MRWeKubSfaimJxqH2mHW1wwWQgQ4nwLB5Y&amp;size=200x200" alt="Wallet Barcode" title="Wallet Barcode"/>--><br /><br />
-                            
-                            <p style="color: #160377; font-weight: 700;">
-                                                        For Creating any Deposit Kindly Contact your Trading Account Manager </p>
-                                </div>
-                    </div>
-                    <div id="pm" style="display: none">
-                        <p>Copy any the wallet address below</p>
-                       
-                            <p style="color: #160377; font-weight: 700;">
-                                USD:	U25184079                            </p>
-                            <p style="color: #160377; font-weight: 700;">
-                                EURO: E26753958                            </p>
-                            <p style="color: #160377; font-weight: 700;">
-                                BTC:                             </p>
-                    </div>
-                    <div class="form-group">
-                          <center><div class="showinvestpro2"></div></center> <input name="submit" value="Request Deposit" type="submit" class="btn btn-primary btn-user btn-block">
-                    </div>
+                <script type="text/javascript">
+                    function showDiv(select) {
+
+                        //BITCOIN
+                        if (select.value == 'Bitcoin') {
+                            document.getElementById('btc').style.display = "block";
+                            document.getElementById('trx').style.display = "none";
+                            document.getElementById('eth').style.display = "none";
+                            document.getElementById('bch').style.display = "none";
+                            document.getElementById('trx').style.display = "none";
+                            document.getElementById('bnb').style.display = "none";
+
+                        } else {
+                            document.getElementById('btc').style.display = "none";
+                        }
+
+
+
+                        //ETHEREUM
+                        if (select.value == 'Ethereum') {
+                            document.getElementById('eth').style.display = "block";
+                            document.getElementById('btc').style.display = "none";
+                            document.getElementById('trx').style.display = "none";
+
+                            document.getElementById('bch').style.display = "none";
+                            document.getElementById('trx').style.display = "none";
+                            document.getElementById('bnb').style.display = "none";
+
+                        } else {
+                            document.getElementById('eth').style.display = "none";
+                        }
+
+                        //BCH
+                        if (select.value == 'Bitcoin Cash') {
+                            document.getElementById('bch').style.display = "block";
+                            document.getElementById('btc').style.display = "none";
+                            document.getElementById('trx').style.display = "none";
+                            document.getElementById('eth').style.display = "none";
+
+                            document.getElementById('trx').style.display = "none";
+                            document.getElementById('bnb').style.display = "none";
+
+                        } else {
+                            document.getElementById('bch').style.display = "none";
+                        }
+
+                        //BCH
+                        if (select.value == 'Perfect Money') {
+                            document.getElementById('pm').style.display = "block";
+                            document.getElementById('btc').style.display = "none";
+                            document.getElementById('trx').style.display = "none";
+                            document.getElementById('eth').style.display = "none";
+                            document.getElementById('bch').style.display = "none";
+                            document.getElementById('trx').style.display = "none";
+                            document.getElementById('bnb').style.display = "none";
+
+                        } else {
+                            document.getElementById('pm').style.display = "none";
+                        }
+
+                        //Dogecoin
+                        if (select.value == 'Dogecoin') {
+                            document.getElementById('doge').style.display = "block";
+                            document.getElementById('btc').style.display = "none";
+                        } else {
+                            document.getElementById('doge').style.display = "none";
+                        }
+
+                        //Tron
+                        if (select.value == 'Tron') {
+                            document.getElementById('trx').style.display = "block";
+                            document.getElementById('btc').style.display = "none";
+
+                            document.getElementById('eth').style.display = "none";
+                            document.getElementById('bch').style.display = "none";
+                            document.getElementById('trx').style.display = "none";
+                            document.getElementById('bnb').style.display = "none";
+
+                        } else {
+                            document.getElementById('trx').style.display = "none";
+                        }
+
+                        //LITCOIN
+                        if (select.value == 'Litcoin') {
+                            document.getElementById('ltc').style.display = "block";
+                            document.getElementById('btc').style.display = "none";
+                            document.getElementById('trx').style.display = "none";
+                            document.getElementById('eth').style.display = "none";
+                            document.getElementById('bch').style.display = "none";
+                            document.getElementById('trx').style.display = "none";
+                            document.getElementById('bnb').style.display = "none";
+
+                        } else {
+                            document.getElementById('ltc').style.display = "none";
+                        }
+
+                        if (select.value == 'USDT') {
+                            document.getElementById('usdt').style.display = "block";
+                            document.getElementById('btc').style.display = "none";
+                            document.getElementById('trx').style.display = "none";
+                            document.getElementById('eth').style.display = "none";
+                            document.getElementById('bch').style.display = "none";
+                            document.getElementById('trx').style.display = "none";
+                            document.getElementById('bnb').style.display = "none";
+
+                        } else {
+                            document.getElementById('usdt').style.display = "none";
+                        }
+
+                        if (select.value == 'BNB') {
+                            document.getElementById('bnb').style.display = "block";
+                            document.getElementById('btc').style.display = "none";
+                            document.getElementById('trx').style.display = "none";
+                            document.getElementById('eth').style.display = "none";
+                            document.getElementById('bch').style.display = "none";
+                            document.getElementById('trx').style.display = "none";
+
+
+                        } else {
+                            document.getElementById('bnb').style.display = "none";
+                        }
+
+                    }
+                </script>
+                <script>
+                    // Add event listeners for copy buttons
+                    document.getElementById("doge-copy-button").addEventListener("click", function (event) {
+                        copyToClipboard("doge-wallet-input", "doge-copy-status");
+                    });
+
+                    document.getElementById("bch-copy-button").addEventListener("click", function (event) {
+                        copyToClipboard("bch-wallet-input", "bch-copy-status");
+                    });
+
+                    document.getElementById("ltc-copy-button").addEventListener("click", function (event) {
+                        copyToClipboard("ltc-wallet-input", "ltc-copy-status");
+                    });
+
+                    document.getElementById("eth-copy-button").addEventListener("click", function (event) {
+                        copyToClipboard("eth-wallet-input", "eth-copy-status");
+                    });
+
+                    document.getElementById("trx-copy-button").addEventListener("click", function (event) {
+                        copyToClipboard("trx-wallet-input", "trx-copy-status");
+                    });
+
+                    document.getElementById("usdt-copy-button").addEventListener("click", function (event) {
+                        copyToClipboard("usdt-wallet-input", "usdt-copy-status");
+                    });
+
+                    document.getElementById("btc-copy-button").addEventListener("click", function (event) {
+                        copyToClipboard("btc-wallet-input", "btc-copy-status");
+                    });
+
+                    document.getElementById("bnb-copy-button").addEventListener("click", function (event) {
+                        copyToClipboard("bnb-wallet-input", "bnb-copy-status");
+                    });
+
+                    // Function to copy wallet address to clipboard
+                    function copyToClipboard(inputId, statusId) {
+                        var walletInput = document.getElementById(inputId);
+                        walletInput.select();
+                        document.execCommand("copy");
+                        var copyStatus = document.getElementById(statusId);
+                        copyStatus.style.display = "inline";
+                        setTimeout(function () {
+                            copyStatus.style.display = "none";
+                        }, 2000); // Hide the message after 2 seconds
+                    }
+
+                    // Add the provided script for the universal copy button
+                    document.getElementById("copy-button").addEventListener("click", function (event) {
+                        // Prevent the button from submitting the form
+                        event.preventDefault();
+
+                        var walletInput = document.getElementById("wallet-input");
+                        walletInput.select();
+                        document.execCommand("copy");
+                        var copyStatus = document.getElementById("copy-status");
+                        copyStatus.style.display = "inline";
+                        setTimeout(function () {
+                            copyStatus.style.display = "none";
+                        }, 2000); // Hide the message after 2 seconds
+                    });
                     
-                    </form>
-                    <!-- Card Header - Dropdown -->
-                    <hr>
-                                <br>
-                                <center>
-                                    <div
-                                    class="align-items-center">
-                                    <h4 class="m-0 font-weight-bold text-primary"><a href="kyc.php">Upload Payment Proof</a></h4>  
-                                </div></center>
+                </script>
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>&copy; 2022 Tradecryptomaxfxt Platform | All Rights Reserved</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="io/user/login.php">Logout</a>
+                    </div>
                 </div>
-
-            </div>
-            <!--End-Action boxes-->
-        </div>
-              
-    </div>
-</div>
-
-
-</div>
-
-<script type="text/javascript">
-    function showDiv( select ) {
-
-        //BITCOIN
-        if ( select.value == 'Bitcoin' ) {
-            document.getElementById( 'btc' ).style.display = "block";
-              document.getElementById( 'trx' ).style.display = "none";
-                        document.getElementById( 'eth' ).style.display = "none";
-           document.getElementById( 'bch' ).style.display = "none";
-      document.getElementById( 'trx' ).style.display = "none";
-                        document.getElementById( 'bnb' ).style.display = "none";
-           
-        } else {
-            document.getElementById( 'btc' ).style.display = "none";
-        }
-
-
-
-        //ETHEREUM
-        if ( select.value == 'Ethereum' ) {
-            document.getElementById( 'eth' ).style.display = "block";
-            document.getElementById( 'btc' ).style.display = "none";
-              document.getElementById( 'trx' ).style.display = "none";
-                    
-           document.getElementById( 'bch' ).style.display = "none";
-      document.getElementById( 'trx' ).style.display = "none";
-                        document.getElementById( 'bnb' ).style.display = "none";
-           
-        } else {
-            document.getElementById( 'eth' ).style.display = "none";
-        }
-
-        //BCH
-        if ( select.value == 'Bitcoin Cash' ) {
-            document.getElementById( 'bch' ).style.display = "block";
-            document.getElementById( 'btc' ).style.display = "none";
-              document.getElementById( 'trx' ).style.display = "none";
-                        document.getElementById( 'eth' ).style.display = "none";
-          
-      document.getElementById( 'trx' ).style.display = "none";
-                        document.getElementById( 'bnb' ).style.display = "none";
-           
-        } else {
-            document.getElementById( 'bch' ).style.display = "none";
-        }
-
-        //BCH
-        if ( select.value == 'Perfect Money' ) {
-            document.getElementById( 'pm' ).style.display = "block";
-            document.getElementById( 'btc' ).style.display = "none";
-              document.getElementById( 'trx' ).style.display = "none";
-                        document.getElementById( 'eth' ).style.display = "none";
-           document.getElementById( 'bch' ).style.display = "none";
-      document.getElementById( 'trx' ).style.display = "none";
-                        document.getElementById( 'bnb' ).style.display = "none";
-           
-        } else {
-            document.getElementById( 'pm' ).style.display = "none";
-        }
-        
-        //Dogecoin
-        if ( select.value == 'Dogecoin' ) {
-            document.getElementById( 'doge' ).style.display = "block";
-            document.getElementById( 'btc' ).style.display = "none";
-        } else {
-            document.getElementById( 'doge' ).style.display = "none";
-        }
-        
-        //Tron
-        if ( select.value == 'Tron' ) {
-            document.getElementById( 'trx' ).style.display = "block";
-            document.getElementById( 'btc' ).style.display = "none";
-             
-                        document.getElementById( 'eth' ).style.display = "none";
-           document.getElementById( 'bch' ).style.display = "none";
-      document.getElementById( 'trx' ).style.display = "none";
-                        document.getElementById( 'bnb' ).style.display = "none";
-           
-        } else {
-            document.getElementById( 'trx' ).style.display = "none";
-        }
-        
-        //LITCOIN
-        if ( select.value == 'Litcoin' ) {
-            document.getElementById( 'ltc' ).style.display = "block";
-            document.getElementById( 'btc' ).style.display = "none";
-              document.getElementById( 'trx' ).style.display = "none";
-                        document.getElementById( 'eth' ).style.display = "none";
-           document.getElementById( 'bch' ).style.display = "none";
-      document.getElementById( 'trx' ).style.display = "none";
-                        document.getElementById( 'bnb' ).style.display = "none";
-           
-        } else {
-            document.getElementById( 'ltc' ).style.display = "none";
-        }
-		
-		if ( select.value == 'USDT' ) {
-            document.getElementById( 'usdt' ).style.display = "block";
-            document.getElementById( 'btc' ).style.display = "none";
-            document.getElementById( 'trx' ).style.display = "none";
-                        document.getElementById( 'eth' ).style.display = "none";
-           document.getElementById( 'bch' ).style.display = "none";
-      document.getElementById( 'trx' ).style.display = "none";
-                        document.getElementById( 'bnb' ).style.display = "none";
-                    
-        } else {
-            document.getElementById( 'usdt' ).style.display = "none";
-        }
-		
-			if ( select.value == 'BNB' ) {
-            document.getElementById( 'bnb' ).style.display = "block";
-            document.getElementById( 'btc' ).style.display = "none";
-              document.getElementById( 'trx' ).style.display = "none";
-                        document.getElementById( 'eth' ).style.display = "none";
-           document.getElementById( 'bch' ).style.display = "none";
-      document.getElementById( 'trx' ).style.display = "none";
-                      
-           
-        } else {
-            document.getElementById( 'bnb' ).style.display = "none";
-        }
-
-    }
-</script>
-
-<!-- Footer -->
-<footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>&copy; 2022 Tradecryptomaxfxt Platform | All Rights Reserved</span>
-        </div>
-    </div>
-</footer>
-<!-- End of Footer -->
-
-</div>
-<!-- End of Content Wrapper -->
-
-</div>
-<!-- End of Page Wrapper -->
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-            
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="io/user/login.php">Logout</a>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- Bootstrap core JavaScript-->
-<!--<script src="vendor/jquery/jquery.min.js"></script>-->
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <!--<script src="vendor/jquery/jquery.min.js"></script>-->
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
 
-<!-- Page level plugins -->
-<script src="vendor/chart.js/Chart.min.js"></script>
+        <!-- Page level plugins -->
+        <script src="vendor/chart.js/Chart.min.js"></script>
 
-<!-- Page level custom scripts -->
-<script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
-
+        <!-- Page level custom scripts -->
+        <script src="js/demo/chart-area-demo.js"></script>
+        <script src="js/demo/chart-pie-demo.js"></script>
 </body>
 
 </html>
