@@ -33,7 +33,7 @@
             }
         }
 
-        <style> #wallet-container {
+        <style>#wallet-container {
             text-align: center;
             margin-top: 20px;
         }
@@ -67,6 +67,7 @@
             font-size: 16px;
             margin-top: 10px;
         }
+
         #bnb-copy-button {
             display: inline-block;
             padding: 5px 10px;
@@ -77,6 +78,7 @@
             font-size: 16px;
             margin-top: 10px;
         }
+
         #usdt-copy-button {
             display: inline-block;
             padding: 5px 10px;
@@ -87,6 +89,7 @@
             font-size: 16px;
             margin-top: 10px;
         }
+
         #eth-copy-button {
             display: inline-block;
             padding: 5px 10px;
@@ -97,6 +100,7 @@
             font-size: 16px;
             margin-top: 10px;
         }
+
         #bch-copy-button {
             display: inline-block;
             padding: 5px 10px;
@@ -107,6 +111,7 @@
             font-size: 16px;
             margin-top: 10px;
         }
+
         #doge-copy-button {
             display: inline-block;
             padding: 5px 10px;
@@ -117,6 +122,7 @@
             font-size: 16px;
             margin-top: 10px;
         }
+
         #trx-copy-button {
             display: inline-block;
             padding: 5px 10px;
@@ -127,6 +133,7 @@
             font-size: 16px;
             margin-top: 10px;
         }
+
         #ltc-copy-button {
             display: inline-block;
             padding: 5px 10px;
@@ -321,8 +328,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span
-                                    class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle" src="upload/nopics.png">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -393,9 +399,36 @@
                                         </script>
 
                                     <form method="post" action="" id="proform">
+                                        <label>Referral Code</label>
                                         <div class="form-group">
-                                            <input type="number" name="amount" class="form-control form-control-user"
-                                                placeholder="Enter Amount" required>
+                                            <input type="text" name="referralCode" id="referralCode"
+                                                class="form-control form-control-user"
+                                                placeholder="Enter Referral Code (if any)">
+                                        </div>
+
+                                        <label>Select Investment Plan</label>
+                                        <div class="form-group">
+                                            <select name="plan" id="investmentPlan"
+                                                class="form-control form-control-user">
+                                                <option value="">Select</option>
+                                                <option value="basic">Basic (APR: 10%)</option>
+                                                <option value="premium">Premium (APR: 15%)</option>
+                                                <option value="gold">Gold (APR: 20%)</option>
+                                                <option value="platinum">Platinum (APR: 25%)</option>
+                                                <option value="topaz">Topaz (APR: 30%)</option>
+                                                <option value="ruby">Ruby (APR: 35%)</option>
+                                                <option value="emerald">Emerald (APR: 40%)</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                </div>
+                                                <input type="number" name="amount" id="amount"
+                                                    class="form-control form-control-user" placeholder="Enter Amount"
+                                                    required>
+                                            </div>
                                         </div>
 
                                         <label>Select Method</label>
@@ -415,25 +448,6 @@
                                             </select>
 
                                         </div>
-
-
-                                        <label>Select Investment Plan</label>
-                                        <div class="form-group">
-                                            <select name="plan" class="form-control form-control-user">
-                                                <option>Basic</option>
-                                                <option>Premium</option>
-                                                <option>Gold</option>
-                                                <option>Platinum</option>
-                                                <option>Topaz</option>
-                                                <option>Ruby</option>
-                                                <option>Emerald</option>
-
-                                            </select>
-
-                                        </div>
-
-
-
                                         </p>
 
                                         <p>You are provided with a very convenient method of depositing using Bitcoin.
@@ -463,7 +477,7 @@
                                             <div id="wallet-container">
                                                 <input type="text" id="btc-wallet-input"
                                                     value="bc1q24v8l4wk3fes68xt35p573v83zed8dqfqzh6lk" readonly>
-                                                    <button type="button" id="btc-copy-button">Copy Address</button>
+                                                <button type="button" id="btc-copy-button">Copy Address</button>
                                                 <span id="btc-copy-status" style="display: none; color: green;">Address
                                                     Copied!</span>
                                             </div>
@@ -478,7 +492,7 @@
                                             <div id="wallet-container">
                                                 <input type="text" id="bnb-wallet-input"
                                                     value="0x9cf4330960b45bb7b0cc1c841de5bed2dd49937e" readonly>
-                                                    <button type="button" id="bnb-copy-button">Copy Address</button>
+                                                <button type="button" id="bnb-copy-button">Copy Address</button>
                                                 <span id="bnb-copy-status" style="display: none; color: green;">Address
                                                     Copied!</span>
                                             </div>
@@ -491,9 +505,9 @@
                                             <img src="https://api.qrserver.com/v1/create-qr-code/?data=0x35408cF82a16f4aD59dfDA1610AC16d346c76bC6&amp;size=200x200"
                                                 alt="Wallet Barcode" title="Wallet Barcode" /><br /><br />
                                             <div id="wallet-container">
-                                                <input type="text" id="usdt-wallet-input" value="0x35408cF82a16f4aD59dfDA1610AC16d346c76bC6"
-                                                    readonly>
-                                                    <button type="button" id="usdt-copy-button">Copy Address</button>
+                                                <input type="text" id="usdt-wallet-input"
+                                                    value="0x35408cF82a16f4aD59dfDA1610AC16d346c76bC6" readonly>
+                                                <button type="button" id="usdt-copy-button">Copy Address</button>
                                                 <span id="usdt-copy-status" style="display: none; color: green;">Address
                                                     Copied!</span>
                                             </div>
@@ -507,7 +521,7 @@
                                             <div id="wallet-container">
                                                 <input type="text" id="eth-wallet-input"
                                                     value="0x35408cF82a16f4aD59dfDA1610AC16d346c76bC6" readonly>
-                                                    <button type="button" id="eth-copy-button">Copy Address</button>
+                                                <button type="button" id="eth-copy-button">Copy Address</button>
                                                 <span id="eth-copy-status" style="display: none; color: green;">Address
                                                     Copied!</span>
                                             </div>
@@ -521,7 +535,7 @@
                                             <div id="wallet-container">
                                                 <input type="text" id="bch-wallet-input"
                                                     value="YOUR_BITCOIN_CASH_ADDRESS_HERE" readonly>
-                                                    <button type="button" id="bch-copy-button">Copy Address</button>
+                                                <button type="button" id="bch-copy-button">Copy Address</button>
                                                 <span id="bch-copy-status" style="display: none; color: green;">Address
                                                     Copied!</span>
                                             </div>
@@ -535,7 +549,7 @@
                                             <div id="wallet-container">
                                                 <input type="text" id="doge-wallet-input"
                                                     value="D84Tk49VDSmXio5wL8C2fwtof7eTuVjtoy" readonly>
-                                                    <button type="button" id="doge-copy-button">Copy Address</button>
+                                                <button type="button" id="doge-copy-button">Copy Address</button>
                                                 <span id="doge-copy-status" style="display: none; color: green;">Address
                                                     Copied!</span>
                                             </div>
@@ -549,7 +563,7 @@
                                             <div id="wallet-container">
                                                 <input type="text" id="trx-wallet-input" value="YOUR_TRON_ADDRESS_HERE"
                                                     readonly>
-                                                    <button type="button" id="trx-copy-button">Copy Address</button>
+                                                <button type="button" id="trx-copy-button">Copy Address</button>
                                                 <span id="trx-copy-status" style="display: none; color: green;">Address
                                                     Copied!</span>
                                             </div>
@@ -563,7 +577,7 @@
                                             <div id="wallet-container">
                                                 <input type="text" id="ltc-wallet-input"
                                                     value="LSNhogRUFjq66PcqjpPCiN7rTdFQengYfk" readonly>
-                                                    <button type="button" id="ltc-copy-button">Copy Address</button>
+                                                <button type="button" id="ltc-copy-button">Copy Address</button>
                                                 <span id="ltc-copy-status" style="display: none; color: green;">Address
                                                     Copied!</span>
                                             </div>
@@ -606,6 +620,40 @@
 
 
                 </div>
+                <script>
+                    // Get references to the select and input elements
+                    const investmentPlanSelect = document.getElementById('investmentPlan');
+                    const amountInput = document.getElementById('amount');
+                    const referralCodeInput = document.getElementById('referralCode');
+
+                    // Define the prices for each investment plan (you can adjust these values)
+                    const planPrices = {
+                        basic: 1000,    // Replace with the actual price for the Basic plan
+                        premium: 2000,  // Replace with the actual price for the Premium plan
+                        gold: 4000,     // Replace with the actual price for the Gold plan
+                        platinum: 8000, // Replace with the actual price for the Platinum plan
+                        topaz: 16000,    // Replace with the actual price for the Topaz plan
+                        ruby: 32000,     // Replace with the actual price for the Ruby plan
+                        emerald: 64000   // Replace with the actual price for the Emerald plan
+                    };
+
+                    // Function to calculate the discounted price if the referral code is valid
+                    function calculateDiscountedPrice() {
+                        const selectedPlan = investmentPlanSelect.value;
+                        if (planPrices[selectedPlan]) {
+                            if (referralCodeInput.value === 'DON RICHIE') {
+                                amountInput.value = planPrices[selectedPlan] / 2; // Halve the price
+                            } else {
+                                amountInput.value = planPrices[selectedPlan]; // Use the regular price
+                            }
+                        }
+                    }
+
+                    // Add event listeners to the select element and referral code input
+                    investmentPlanSelect.addEventListener('change', calculateDiscountedPrice);
+                    referralCodeInput.addEventListener('input', calculateDiscountedPrice);
+                </script>
+
                 <script type="text/javascript">
                     function showDiv(select) {
 
@@ -790,7 +838,7 @@
                             copyStatus.style.display = "none";
                         }, 2000); // Hide the message after 2 seconds
                     });
-                    
+
                 </script>
                 <!-- Footer -->
                 <footer class="sticky-footer bg-white">
