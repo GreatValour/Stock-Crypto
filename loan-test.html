@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Progress Page</title>
+    <style>
+
+        /* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply styles to the header */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Style the progress bar */
+.progress-bar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.progress-step {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    background-color: #ddd;
+    border: 1px solid #999;
+}
+
+.step1 {
+    background-color: #4caf50; /* Green color for completed step 1 */
+}
+
+.step2 {
+    background-color: #ccc; /* Gray color for inactive step 2 */
+}
+
+.step3 {
+    background-color: #ccc; /* Gray color for inactive step 3 */
+}
+
+/* Style the content sections */
+.content {
+    padding: 20px;
+}
+
+/* Apply styles to the footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Loan Application Progress</h1>
+    </header>
+    <main>
+        <div class="progress-bar">
+            <div class="progress-step step1">Step 1</div>
+            <div class="progress-step step2">Step 2</div>
+            <div class="progress-step step3">Step 3</div>
+        </div>
+        <div class="content">
+            <section id="step1">
+                <h2>Step 1: Personal Information</h2>
+                <!-- Form for personal information -->
+            </section>
+            <section id="step2">
+                <h2>Step 2: Financial Details</h2>
+                <!-- Form for financial details -->
+            </section>
+            <section id="step3">
+                <h2>Step 3: Review and Submit</h2>
+                <!-- Form for review and submission -->
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Loan Progress Page</p>
+    </footer>
+</body>
+</html>

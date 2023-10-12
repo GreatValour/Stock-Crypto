@@ -28,6 +28,26 @@
 	<meta name="twitter:card"
 		content="Cryptocurrency trading and investment platform. Refer &amp; earn ten percentage (10%) of your referral's investment." />
 	<!-- graph card ends -->
+	<!-- Include the Firebase SDK -->
+	<script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-database.js"></script>
+	<script>
+		// Firebase configuration
+		const firebaseConfig = {
+			apiKey: "AIzaSyCUslMMhWhzMibDzcCFVEyJygdLnW9Q1Nc",
+			authDomain: "stock-crypto-test.firebaseapp.com",
+			projectId: "stock-crypto-test",
+			storageBucket: "stock-crypto-test.appspot.com",
+			messagingSenderId: "999345919651",
+			appId: "1:999345919651:web:cded170ca4548544c39116"
+		};
+
+		// Initialize Firebase
+		const app = firebase.initializeApp(firebaseConfig);
+		const auth = firebase.auth();
+		const database = firebase.database();
+	</script>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="images/favicon.png">
@@ -93,14 +113,15 @@
 						<!-- msg starts -->
 						<div id="loginMsg"></div>
 						<h2 class="title-head hidden-xs" style="font-size: 34px; color: #1A1B30">member
-							<span>login</span></h2>
+							<span>login</span>
+						</h2>
 						<!-- Section Title Ends -->
 						<!-- Form Starts -->
 						<link rel="stylesheet" href="sweetalert.css" />
 						<script src="sweetalert-dev.js" type="text/javascript"></script>
 						<form id="login_form" method="post" action="">
-							<input type="hidden" name="csrf_token" value="a0e47fe5a1cdbdf56d666a1ec9319f64"> <input
-								type="hidden" name="action" value="login">
+							<input type="hidden" name="csrf_token" value="a0e47fe5a1cdbdf56d666a1ec9319f64">
+							<input type="hidden" name="action" value="login">
 							<!-- Input Field Starts -->
 							<div class="form-group">
 								<input class="form-control" name="username" id="username" placeholder="E-MAIL"
@@ -127,10 +148,10 @@
 							<!-- Input Field Ends -->
 							<!-- Submit Form Button Starts -->
 							<div class="form-group">
-								<button class="btn btn-primary btn-block" name="login-user" type="submit"
+								<button class="btn btn-primary btn-block" name="login-user" type="button"
 									id="btn-login">Login</button>
 							</div>
-							<p class="text-center">Don't have an account? <a href="register.php.html">Sign Up now</a>
+							<p class="text-center">Don't have an account? <a href="register.html">Sign Up now</a>
 							</p>
 							<!-- Submit Form Button Ends -->
 						</form>
@@ -147,48 +168,82 @@
 		</div>
 	</div>
 	<!-- Wrapper Ends -->
+	<script>
+		// Event listener for the "Login" button
+		document.getElementById('btn-login').addEventListener('click', function () {
+			login();
+		});
+
+		function login() {
+			const email = document.getElementById("username").value;
+			const password = document.getElementById("password").value;
+
+			auth.signInWithEmailAndPassword(email, password)
+				.then(function () {
+					var user = auth.currentUser;
+
+					// Check if the user exists in the database
+					checkUserInDatabase(email, password);
+				})
+				.catch(function (error) {
+            var error_code = error.code;
+            var error_message = error.message;
+            // Check if the error message contains the "auth/user-not-found" or "auth/wrong-password" codes
+            if (error_code === "auth/user-not-found" || error_code === "auth/wrong-password") {
+                alert('Username or password incorrect.');
+            } else {
+                alert(error_message);
+            }
+        });
+}
+
+		// Function to check if the user exists in the Firebase database
+		function checkUserInDatabase(email, password) {
+			var usersRef = database.ref("users");
+
+			usersRef.once("value")
+				.then(function (snapshot) {
+					var userFound = false;
+					snapshot.forEach(function (childSnapshot) {
+						var userData = childSnapshot.val();
+
+						if (userData.email === email && userData.password === password) {
+							// Valid credentials, proceed with login
+							userFound = true;
+							return;
+						}
+					});
+
+					if (userFound) {
+						// Redirect or perform any action after login
+						window.location.href = "dashboard.html";
+					} else {
+						// If the loop completes without finding a match, show an error message.
+						alert('Invalid username or password.');
+					}
+				})
+				.catch(function (error) {
+					alert('Error checking user in the database: ' + error.message);
+				});
+		}
+
+	</script>
+
 	<!-- Template JS Files -->
 	<script src="js/jquery-2.2.4.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 
-	<script>
-		// Function to get the stored user data from Local Storage
-		function getUserDataFromLocalStorage() {
-		  const userDataJSON = localStorage.getItem('user');
-		  if (userDataJSON) {
-			return JSON.parse(userDataJSON);
-		  }
-		  return null;
-		}
-	  
-		// Function to update the login form fields with user data, if available
-		function updateLoginFormWithUserData() {
-		  const userData = getUserDataFromLocalStorage();
-		  if (userData) {
-			const usernameInput = document.getElementById('username');
-			const passwordInput = document.getElementById('password');
-	  
-			// Fill the form fields with the stored user data
-			usernameInput.value = userData.username || '';
-			passwordInput.value = userData.password || '';
-		  }
-		}
-	  
-		// Call the function to update the login form with user data
-		updateLoginFormWithUserData();
-	  </script>
-	  
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-	var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-	(function(){
-	var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-	s1.async=true;
-	s1.src='https://embed.tawk.to/64a6f480cc26a871b026cae4/1h72ik7qh';
-	s1.charset='UTF-8';
-	s1.setAttribute('crossorigin','*');
-	s0.parentNode.insertBefore(s1,s0);
-	})();
+	<!--Start of Tawk.to Script-->
+	<script type="text/javascript">
+		var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+		(function () {
+			var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+			s1.async = true;
+			s1.src = 'https://embed.tawk.to/64a6f480cc26a871b026cae4/1h72ik7qh';
+			s1.charset = 'UTF-8';
+			s1.setAttribute('crossorigin', '*');
+			s0.parentNode.insertBefore(s1, s0);
+		})();
 	</script>
 	<!--End of Tawk.to Script-->
 </body>

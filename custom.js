@@ -22,7 +22,7 @@ function handleFormSubmission(event) {
         confirmButtonText: 'OK',
       }).then(() => {
         // Redirect to the dashboard page
-        window.location.href = 'login.php.html';
+        window.location.href = 'login.html';
       });
     }
   }

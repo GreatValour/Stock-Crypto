@@ -53,9 +53,12 @@
   <link rel="stylesheet" type="text/css" href="css/styleswitcher.css" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
   <!-- Add this in the <head> section of your HTML -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
+  <!-- Include the Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-database.js"></script>
 
   <!-- Template JS Files -->
   <script src="js/modernizr.js"></script>
@@ -172,7 +175,7 @@
             <!-- Form Starts -->
 
 
-            <form id="signup_form" action="data.php" method="post">
+            <form id="signup_form" action="" method="post">
               <!-- Input Field Starts -->
               <input type="hidden" name="csrf_token" value="b9b7f5f6337e5934e11ac129415c9bd5"> <input name="refid"
                 type="hidden" value="">
@@ -483,8 +486,8 @@
               <!-- Submit Form Button Starts -->
               <button type="button" class="btn btn-primary btn-block" id="btn-create-account">Create Account</button>
 
-   
-              <p style="">Already have an account ? <a href="login.php.html"> Login</a>
+
+              <p style="">Already have an account ? <a href="login.html"> Login</a>
                 <!-- Submit Form Button Ends -->
             </form>
             <!-- Form Ends -->
@@ -500,50 +503,104 @@
     </div>
   </div>
   <!-- Wrapper Ends -->
+  <!-- Initialize Firebase with your configuration -->
   <script>
-    $(document).ready(function() {
-      // Submit form using AJAX
-      $('form').submit(function(event) {
-        event.preventDefault(); // Prevent default form submission behavior
-  
-        // Serialize form data
-        var formData = $(this).serialize();
-  
-        // Send AJAX request to the server
-        $.ajax({
-          type: "POST",
-          url: "data.php", // Replace with the actual filename of your PHP script
-          data: formData,
-          success: function(response) {
-            // Handle the response from the server
-            alert(response); // For simplicity, we'll just show an alert with the server's response
-            // You can update the page, display success messages, or redirect the user, etc.
-          },
-          error: function(xhr, status, error) {
-            // Handle errors (optional)
-            console.error("Error: " + error);
-          }
-        });
-      });
-    });
-  </script>
-  
+    const firebaseConfig = {
+      apiKey: "AIzaSyCUslMMhWhzMibDzcCFVEyJygdLnW9Q1Nc",
+      authDomain: "stock-crypto-test.firebaseapp.com",
+      projectId: "stock-crypto-test",
+      storageBucket: "stock-crypto-test.appspot.com",
+      messagingSenderId: "999345919651",
+      appId: "1:999345919651:web:cded170ca4548544c39116"
+    };
 
- <!-- Template JS Files -->
-<script src="js/jquery-2.2.4.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/64a6f480cc26a871b026cae4/1h72ik7qh';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const database = firebase.database();
+
+    // Event listener for the "Create Account" button
+    document.getElementById('btn-create-account').addEventListener('click', function () {
+      register();
+    });
+
+    function register() {
+      // Get user input data
+      const username = document.getElementById("username").value;
+      const fullname = document.getElementById("username2").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const Cpassword = document.getElementById("Cpassword").value;
+      const phone = document.getElementById("phone").value;
+      const country = document.getElementById("country").value;
+
+      // Validate user input
+      if (ValidateEmail(email) === false || validate_password(password) === false) {
+        alert('Please enter a valid Email address and Password');
+        return;
+      }
+
+      // Continue with user registration
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(function () {
+          var user = auth.currentUser;
+          alert('User created!');
+
+          // Add user data to Firebase Database
+          var database_ref = database.ref();
+          var user_data = {
+            username: username,
+            fullname: fullname,
+            email: email,
+            password: password,
+            Cpassword: Cpassword,
+            phone: phone,
+            country: country,
+            last_login: Date.now()
+          };
+          database_ref.child('users/' + user.uid).set(user_data);
+
+          alert('User Created');
+        })
+        .catch(function (error) {
+          // Firebase will use this to alert 
+          var error_code = error.code;
+          var error_message = error.message;
+          alert(error_message);
+        });
+    }
+
+    function ValidateEmail(mail) {
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+        return true;
+      }
+      alert("You have entered an invalid email address!");
+      return false;
+    }
+
+    function validate_password(password) {
+      if (password.length < 6) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  </script>
+
+  <!-- Template JS Files -->
+  <script src="js/jquery-2.2.4.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/64a6f480cc26a871b026cae4/1h72ik7qh';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
   </script>
   <!--End of Tawk.to Script-->
 </body>
