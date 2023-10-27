@@ -230,7 +230,8 @@
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Bitcoin</div>
 
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0.000000</div>
+                                            <div id="bitcoin" class="h5 mb-0 font-weight-bold text-gray-800"><span
+                                                    id="bitcoin"></span></div>
                                         </div>
                                         <div class="col-auto">
                                             <img src="user/btclogo.png" style="height:40px" />
@@ -248,7 +249,8 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Ethereum</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0.000000</div>
+                                            <div id="ethereum" class="h5 mb-0 font-weight-bold text-gray-800"><span
+                                                    id="ethereum"></span></div>
                                         </div>
                                         <div class="col-auto">
                                             <img src="user/ethlogo.png" style="height:50px" />
@@ -269,7 +271,9 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">0.000000
+                                                    <div id="bitcoin-cash"
+                                                        class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><span
+                                                            id="bitcoin-cash"></span>
                                                     </div>
                                                 </div>
 
@@ -292,7 +296,9 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Litecoin</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"> 0.000000</div>
+                                            <div id="litecoin" class="h5 mb-0 font-weight-bold text-gray-800"> <span
+                                                    id="litcoin"></span>
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <img src="user/ltclogo.png" style="height:40px" />
@@ -487,6 +493,49 @@
             <!-- <a href="https://wa.me/19299491922" style="display:inline-block;position:fixed;right:8px;bottom:88px;"><img src="live-chat.png" style="height:80px"/></a>-->
             <!-- Smartsupp Live Chat script -->
             <!--Start of Tawk.to Script-->
+            <script>
+                // Initialize Firebase with your Firebase project config
+                const firebaseConfig = {
+                    apiKey: "AIzaSyCUslMMhWhzMibDzcCFVEyJygdLnW9Q1Nc",
+                    authDomain: "stock-crypto-test.firebaseapp.com",
+                    projectId: "stock-crypto-test",
+                    storageBucket: "stock-crypto-test.appspot.com",
+                    messagingSenderId: "999345919651",
+                    appId: "1:999345919651:web:cded170ca4548544c39116"
+                };
+                firebase.initializeApp(firebaseConfig);
+
+                // Check if a user is authenticated
+                firebase.auth().onAuthStateChanged(function (user) {
+                    if (user) {
+                        // User is signed in, fetch the user's data from the database
+                        const uid = user.uid;
+                        const database_ref = firebase.database().ref('users/' + uid);
+
+                        database_ref.once('value')
+                            .then(function (snapshot) {
+                                const userData = snapshot.val();
+                                if (userData) {
+                                    // Update the profile page with user data
+                                    document.getElementById('bitcoin').textContent = userData.bitcoin;
+                                    document.getElementById('ethereum').textContent = userData.ethereum;
+                                    document.getElementById('bitcoin-cash').textContent = userData.bitcoin-cash;
+                                    document.getElementById('litcoin').textContent = userData.litcoin;
+                                } else {
+                                    // User data not found
+                                    console.log("User data not found");
+                                }
+                            })
+                            .catch(function (error) {
+                                // Handle any database read errors
+                                console.error("Error fetching user data: " + error.message);
+                            });
+                    } else {
+                        // User is not signed in
+                        console.log("User is not signed in.");
+                    }
+                });
+            </script>
             <script type="text/javascript">
                 var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
                 (function () {
