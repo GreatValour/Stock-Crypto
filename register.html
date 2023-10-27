@@ -620,6 +620,19 @@
       const auth = firebase.auth();
       const database = firebase.database();
 
+      // Function to get the next User ID
+      async function getNextUserID() {
+        const userCountRef = database.ref('user_count');
+        const userCountSnapshot = await userCountRef.once('value');
+        const userCount = userCountSnapshot.val() || 0;
+
+        // Increment the user count
+        await userCountRef.set(userCount + 1);
+
+        return `User_${userCount + 1}`;
+      }
+
+
       // Event listener for the "Create Account" button
       document.getElementById('btn-create-account').addEventListener('click', function () {
         register();
@@ -654,14 +667,17 @@
           .then(function () {
             var user = auth.currentUser;
 
+            // Generate a custom UID for the user
+            const customUID = await getNextUserID();
+
             // Hide the registration form
             document.getElementById('card').style.display = 'block';
 
             // Generate a UID for the user
             var uid = user.uid;
 
-            // Add user data to Firebase Database using UID as the key
-            var database_ref = database.ref('users/' + uid);
+            // Add user data to Firebase Database using custom UID as the key
+            var database_ref = database.ref('users/' + customUID);
             var user_data = {
               fullname: fullname,
               email: email,
