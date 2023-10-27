@@ -90,9 +90,10 @@
             <hr class="sidebar-divider">
 
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
-                    <i class="fa fa-sign-out"></i>
-                    <span>Logout</span></a>
+                <a class="dropdown-item" href="#logoutModal" data-toggle="modal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Logout
+                </a>
             </li>
 
 
@@ -282,7 +283,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>&copy; 2022 ROI.Cryptomaxfxt Platform | All Rights Reserved</span>
+                        <span>&copy; Tardecryptomaxfxt Platform | All Rights Reserved</span>
                     </div>
                 </div>
             </footer>
@@ -309,16 +310,36 @@
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="index.html">Logout</a>
+                    <button id="btn-logout-modal" class="btn btn-primary">Logout</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // Event listener for the "Logout" button in the modal
+        document.getElementById('btn-logout-modal').addEventListener('click', function () {
+            logout();
+        });
+
+        // Function to log the user out
+        function logout() {
+            firebase.auth().signOut()
+                .then(function () {
+                    // Sign-out successful.
+                    window.location.href = "login.html"; // Redirect to the login page or any other page after logout.
+                })
+                .catch(function (error) {
+                    // An error occurred while logging out.
+                    console.error(error);
+                });
+        }
+
+    </script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="user/vendor/jquery/jquery.min.js"></script>

@@ -183,43 +183,27 @@
 					var user = auth.currentUser;
 
 					// Check if the user exists in the database
-					checkUserInDatabase(email, password);
+					checkUserInDatabase(user.uid);
 				})
 				.catch(function (error) {
-            var error_code = error.code;
-            var error_message = error.message;
-            // Check if the error message contains the "auth/user-not-found" or "auth/wrong-password" codes
-            if (error_code === "auth/user-not-found" || error_code === "auth/wrong-password") {
-                alert('Username or password incorrect.');
-            } else {
-                alert(error_message);
-            }
-        });
-}
-
+					var error_code = error.code;
+					var error_message = error.message;
+					// Handle login errors here
+					alert(error_message);
+				});
+		}
 		// Function to check if the user exists in the Firebase database
-		function checkUserInDatabase(email, password) {
+		function checkUserInDatabase(uid) {
 			var usersRef = database.ref("users");
 
-			usersRef.once("value")
+			usersRef.child(uid).once("value")
 				.then(function (snapshot) {
-					var userFound = false;
-					snapshot.forEach(function (childSnapshot) {
-						var userData = childSnapshot.val();
-
-						if (userData.email === email && userData.password === password) {
-							// Valid credentials, proceed with login
-							userFound = true;
-							return;
-						}
-					});
-
-					if (userFound) {
-						// Redirect or perform any action after login
+					if (snapshot.exists()) {
+						// User with the given UID exists, proceed with login
 						window.location.href = "dashboard.html";
 					} else {
-						// If the loop completes without finding a match, show an error message.
-						alert('Invalid username or password.');
+						// User not found in the database
+						alert('Invalid user or password.');
 					}
 				})
 				.catch(function (error) {

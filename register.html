@@ -645,8 +645,11 @@
           // Hide the registration form
           document.getElementById('card').style.display = 'block';
 
-          // Add user data to Firebase Database
-          var database_ref = database.ref();
+           // Generate a UID for the user
+           var uid = user.uid;
+
+           // Add user data to Firebase Database using UID as the key
+           var database_ref = database.ref('users/' + uid);
           var user_data = {
             fullname: fullname,
             email: email,
@@ -656,7 +659,7 @@
             country: country,
             last_login: Date.now()
           };
-          database_ref.child('users/' + user.uid).set(user_data);
+          database_ref.set(user_data);
         })
         .catch(function (error) {
           // Firebase will use this to alert 
