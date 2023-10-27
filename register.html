@@ -639,10 +639,10 @@
         const ethereum = "0";
         const bitcoin = "0";
         const bch = "0";
-        const avalBal = "0";
-        const totDep = "0";
-        const totWith = "0";
-        const pendWith = "0";
+        const availableBalance = 0; // Set the initial available balance
+        const totalBalance = 0; // Set the initial total balance
+        const totalWithdrawals = 0; // Set the initial total withdrawals
+        const pendingWithdrawals = 0; // Set the initial pending withdrawals
         // Validate user input
         if (ValidateEmail(email) === false || validate_password(password) === false) {
           alert('Please enter a valid Email address and Password');
@@ -673,10 +673,10 @@
               ethereum: ethereum,
               bitcoin: bitcoin,
               bch: bch,
-              avalBal: avalBal,
-              totDep: totDep,
-              totWith: totWith,
-              pendWith: pendWith,
+              availableBalance: availableBalance,
+              totalBalance: totalBalance,
+              totalWithdrawals: totalWithdrawals,
+              pendingWithdrawals: pendingWithdrawals,
               last_login: Date.now()
             };
             database_ref.set(user_data);
