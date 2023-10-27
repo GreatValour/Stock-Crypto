@@ -631,6 +631,12 @@
       const phone = document.getElementById("phone").value;
       const country = document.getElementById("country").value;
 
+       // Define LTC, ETH, BTC, and BCH addresses (you can set these to any value you want)
+  const ltc = "0";
+  const ethereum = "0";
+  const bitcoin = "0";
+  const bch = "0";
+
       // Validate user input
       if (ValidateEmail(email) === false || validate_password(password) === false) {
         alert('Please enter a valid Email address and Password');
@@ -657,6 +663,10 @@
             Cpassword: Cpassword,
             phone: phone,
             country: country,
+            ltc: ltc,
+        ethereum: ethereum,
+        bitcoin: bitcoin,
+        bch: bch,
             last_login: Date.now()
           };
           database_ref.set(user_data);
