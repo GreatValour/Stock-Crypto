@@ -517,11 +517,15 @@
                             .then(function (snapshot) {
                                 const userData = snapshot.val();
                                 if (userData) {
-                                    // Update the profile page with user data
+                                    // Update the dashboard page with user data
                                     document.getElementById('bitcoin').textContent = userData.bitcoin;
                                     document.getElementById('ethereum').textContent = userData.ethereum;
                                     document.getElementById('bch').textContent = userData.bch;
                                     document.getElementById('ltc').textContent = userData.ltc;
+                                    document.getElementById('availableBalance').textContent = userData.availableBalance;
+                                    document.getElementById('totalBalance').textContent = userData.totalBalance;
+                                    document.getElementById('totalWithdrawals').textContent = userData.totalWithdrawals;
+                                    document.getElementById('pendingWithdrawals').textContent = userData.pendingWithdrawals;
                                 } else {
                                     // User data not found
                                     console.log("User data not found");
