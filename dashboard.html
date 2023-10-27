@@ -271,10 +271,8 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div id="bitcoin-cash"
-                                                        class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><span
-                                                            id="bitcoin-cash"></span>
-                                                    </div>
+                                                    <div id="bch" class="h5 mb-0 font-weight-bold text-gray-800"><span
+                                                        id="bch"></span></div>
                                                 </div>
 
                                             </div>
@@ -296,9 +294,8 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Litecoin</div>
-                                            <div id="litecoin" class="h5 mb-0 font-weight-bold text-gray-800"> <span
-                                                    id="litcoin"></span>
-                                            </div>
+                                                <div id="ltc" class="h5 mb-0 font-weight-bold text-gray-800"><span
+                                                    id="ltc"></span></div>
                                         </div>
                                         <div class="col-auto">
                                             <img src="user/ltclogo.png" style="height:40px" />
@@ -519,8 +516,8 @@
                                     // Update the profile page with user data
                                     document.getElementById('bitcoin').textContent = userData.bitcoin;
                                     document.getElementById('ethereum').textContent = userData.ethereum;
-                                    document.getElementById('bitcoin-cash').textContent = userData.bitcoin-cash;
-                                    document.getElementById('litcoin').textContent = userData.litcoin;
+                                    document.getElementById('bch').textContent = userData.bch;
+                                    document.getElementById('ltc').textContent = userData.ltc;
                                 } else {
                                     // User data not found
                                     console.log("User data not found");
