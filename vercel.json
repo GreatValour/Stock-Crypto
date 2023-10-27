@@ -1,60 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/about",
-      "destination": "/about.html"
-    },
-    {
-      "source": "/deposit",
-      "destination": "/deposit.html"
-    },
-    {
-      "source": "/dashboard",
-      "destination": "/dashboard.html"
-    },
-    {
-      "source": "/faq.php",
-      "destination": "/faq.php.html"
-    },
-    {
-      "source": "/forgot-password.php",
-      "destination": "/forgot-password.php.html"
-    },
-    {
-      "source": "/index",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/login",
-      "destination": "/login.html"
-    },
-    {
-      "source": "/privacy-policy.php",
-      "destination": "/privacy-policy.php.html"
-    },
-    {
-      "source": "/profile",
-      "destination": "/profile.html"
-    },
-    {
-      "source": "/proof",
-      "destination": "/proof.html"
-    },
-    {
-      "source": "/register",
-      "destination": "/register.html"
-    },
-    {
-      "source": "/terms-of-services.php",
-      "destination": "/terms-of-services.php.html"
-    },
-    {
-      "source": "/transaction-log",
-      "destination": "/transaction-log.html"
-    },
-    {
-      "source": "/withdrawal",
-      "destination": "/withdrawal.html"
+      "source": "/:path*",
+      "destination": "/:path*.html"
     }
   ]
 }
