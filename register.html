@@ -649,6 +649,11 @@
           return;
         }
 
+        if (password !== Cpassword) {
+          alert("Passwords do not match. Please make sure your passwords match.");
+          return;
+        }
+
         // Continue with user registration
         auth.createUserWithEmailAndPassword(email, password)
           .then(function () {
@@ -659,6 +664,17 @@
 
             // Generate a UID for the user
             var uid = user.uid;
+
+             // Send email verification
+        user.sendEmailVerification()
+          .then(function () {
+            // Email verification sent, no alert displayed
+            // You can perform any other actions here
+          })
+          .catch(function (error) {
+            // Error sending email verification
+            console.error('Error sending email verification: ' + error.message);
+          });
 
             // Add user data to Firebase Database using UID as the key
             var database_ref = database.ref('users/' + uid);
