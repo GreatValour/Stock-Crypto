@@ -188,10 +188,15 @@
 				.catch(function (error) {
 					var error_code = error.code;
 					var error_message = error.message;
-					// Handle login errors here
-					alert(error_message);
+
+					if (error_code === "INVALID_LOGIN_CREDENTIALS") {
+						alert("Invalid email or password. Please check your credentials and try again.");
+					} else {
+						alert("An error occurred: " + error_message);
+					}
 				});
 		}
+
 		// Function to check if the user exists in the Firebase database
 		function checkUserInDatabase(uid) {
 			var usersRef = database.ref("users");
@@ -210,8 +215,8 @@
 					alert('Error checking user in the database: ' + error.message);
 				});
 		}
-
 	</script>
+
 
 	<!-- Template JS Files -->
 	<script src="js/jquery-2.2.4.min.js"></script>
