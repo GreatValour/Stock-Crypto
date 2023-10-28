@@ -173,34 +173,29 @@
 		document.getElementById('btn-login').addEventListener('click', function () {
 			login();
 		});
-
+	
 		function login() {
 			const email = document.getElementById("username").value;
 			const password = document.getElementById("password").value;
-
+	
 			auth.signInWithEmailAndPassword(email, password)
 				.then(function () {
 					var user = auth.currentUser;
-
+	
 					// Check if the user exists in the database
 					checkUserInDatabase(user.uid);
 				})
 				.catch(function (error) {
-					var error_code = error.code;
-					var error_message = error.message;
-
-					if (error_code === "INVALID_LOGIN_CREDENTIALS") {
-						alert("Invalid email or password. Please check your credentials and try again.");
-					} else {
-						alert("An error occurred: " + error_message);
-					}
+					// Display a single error message for both cases
+					console.error("An error occurred:", error);
+					alert("Invalid email or password. Please check your credentials and try again.");
 				});
 		}
-
+	
 		// Function to check if the user exists in the Firebase database
 		function checkUserInDatabase(uid) {
 			var usersRef = database.ref("users");
-
+	
 			usersRef.child(uid).once("value")
 				.then(function (snapshot) {
 					if (snapshot.exists()) {
@@ -208,14 +203,17 @@
 						window.location.href = "dashboard.html";
 					} else {
 						// User not found in the database
-						alert('Invalid user or password.');
+						console.error('Invalid user or password.');
+						alert("Invalid email or password. Please check your credentials and try again.");
 					}
 				})
 				.catch(function (error) {
-					alert('Error checking user in the database: ' + error.message);
+					console.error('Error checking user in the database:', error);
+					alert("Invalid email or password. Please check your credentials and try again.");
 				});
 		}
 	</script>
+	
 
 
 	<!-- Template JS Files -->
