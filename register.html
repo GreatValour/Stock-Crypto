@@ -665,16 +665,18 @@
             // Generate a UID for the user
             var uid = user.uid;
 
-             // Send email verification
-        user.sendEmailVerification()
-          .then(function () {
-            // Email verification sent, no alert displayed
-            // You can perform any other actions here
-          })
-          .catch(function (error) {
-            // Error sending email verification
-            console.error('Error sending email verification: ' + error.message);
-          });
+            // Send email verification
+            user.sendEmailVerification()
+              .then(function () {
+                // Email verification sent, no alert displayed
+                // You can perform any other actions here
+                // Redirect the user to the login page if their email is verified
+                checkEmailVerificationStatus(user);
+              })
+              .catch(function (error) {
+                // Error sending email verification
+                console.error('Error sending email verification: ' + error.message);
+              });
 
             // Add user data to Firebase Database using UID as the key
             var database_ref = database.ref('users/' + uid);
@@ -703,6 +705,19 @@
             var error_message = error.message;
             alert(error_message);
           });
+      }
+
+      // Function to check email verification status
+      function checkEmailVerificationStatus(user) {
+        // Add an observer to check for email verification status
+        user.reload().then(function () {
+          user = auth.currentUser;
+          if (user.emailVerified) {
+            // The user's email is verified
+            // You can now redirect the user to the login page
+            window.location.href = 'login.html'; // Replace 'login.html' with the actual URL of your login page
+          }
+        });
       }
 
       function ValidateEmail(mail) {
