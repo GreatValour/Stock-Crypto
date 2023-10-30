@@ -29,18 +29,19 @@
 		content="Cryptocurrency trading and investment platform. Refer &amp; earn ten percentage (10%) of your referral's investment." />
 	<!-- graph card ends -->
 	<!-- Include the Firebase SDK -->
-	<script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-auth.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js"></script>
 	<script>
 		// Firebase configuration
 		const firebaseConfig = {
-			apiKey: "AIzaSyCUslMMhWhzMibDzcCFVEyJygdLnW9Q1Nc",
-			authDomain: "stock-crypto-test.firebaseapp.com",
-			projectId: "stock-crypto-test",
-			storageBucket: "stock-crypto-test.appspot.com",
-			messagingSenderId: "999345919651",
-			appId: "1:999345919651:web:cded170ca4548544c39116"
+			apiKey: "AIzaSyBaiVttBs2Dey4VXG4RIrTcx2sUTKozZD8",
+			authDomain: "tardecryptomaxfxt.firebaseapp.com",
+			databaseURL: "https://tardecryptomaxfxt-default-rtdb.firebaseio.com",
+			projectId: "tardecryptomaxfxt",
+			storageBucket: "tardecryptomaxfxt.appspot.com",
+			messagingSenderId: "960466327702",
+			appId: "1:960466327702:web:0e7a2a2bdfa1df5572cab7"
 		};
 
 		// Initialize Firebase
@@ -173,15 +174,15 @@
 		document.getElementById('btn-login').addEventListener('click', function () {
 			login();
 		});
-	
+
 		function login() {
 			const email = document.getElementById("username").value;
 			const password = document.getElementById("password").value;
-	
+
 			auth.signInWithEmailAndPassword(email, password)
 				.then(function () {
 					var user = auth.currentUser;
-	
+
 					// Check if the user exists in the database
 					checkUserInDatabase(user.uid);
 				})
@@ -191,11 +192,11 @@
 					alert("Invalid email or password. Please check your credentials and try again.");
 				});
 		}
-	
+
 		// Function to check if the user exists in the Firebase database
 		function checkUserInDatabase(uid) {
 			var usersRef = database.ref("users");
-	
+
 			usersRef.child(uid).once("value")
 				.then(function (snapshot) {
 					if (snapshot.exists()) {
@@ -213,7 +214,7 @@
 				});
 		}
 	</script>
-	
+
 
 
 	<!-- Template JS Files -->
