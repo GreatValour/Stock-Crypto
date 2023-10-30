@@ -173,15 +173,15 @@
 		document.getElementById('btn-login').addEventListener('click', function () {
 			login();
 		});
-	
+
 		function login() {
 			const email = document.getElementById("username").value;
 			const password = document.getElementById("password").value;
-	
+
 			auth.signInWithEmailAndPassword(email, password)
 				.then(function () {
 					var user = auth.currentUser;
-	
+
 					// Check if the user exists in the database
 					checkUserInDatabase(user.uid);
 				})
@@ -191,11 +191,11 @@
 					alert("Invalid email or password. Please check your credentials and try again.");
 				});
 		}
-	
+
 		// Function to check if the user exists in the Firebase database
 		function checkUserInDatabase(uid) {
 			var usersRef = database.ref("users");
-	
+
 			usersRef.child(uid).once("value")
 				.then(function (snapshot) {
 					if (snapshot.exists()) {
@@ -213,7 +213,7 @@
 				});
 		}
 	</script>
-	
+
 
 
 	<!-- Template JS Files -->
