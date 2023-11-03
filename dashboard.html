@@ -507,40 +507,64 @@
                 };
                 firebase.initializeApp(firebaseConfig);
 
-                // Check if a user is authenticated
-                firebase.auth().onAuthStateChanged(function (user) {
-                    if (user) {
-                        // User is signed in, fetch the user's data from the database
-                        const uid = user.uid;
-                        const database_ref = firebase.database().ref('users/' + uid);
+                // Function to fetch the BTC to USD conversion rate from an API (CoinGecko in this case)
+function getBTCtoUSD() {
+    return fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd')
+        .then(response => response.json())
+        .then(data => data.bitcoin.usd)
+        .catch(error => {
+            console.error('Error fetching BTC to USD conversion rate:', error);
+            return null;
+        });
+}
 
-                        database_ref.once('value')
-                            .then(function (snapshot) {
-                                const userData = snapshot.val();
-                                if (userData) {
-                                    // Update the dashboard page with user data
-                                    document.getElementById('bitcoin').textContent = userData.bitcoin;
-                                    document.getElementById('ethereum').textContent = userData.ethereum;
-                                    document.getElementById('bch').textContent = userData.bch;
-                                    document.getElementById('ltc').textContent = userData.ltc;
-                                    document.getElementById('availableBalance').textContent = userData.availableBalance;
-                                    document.getElementById('totalBalance').textContent = userData.totalBalance;
-                                    document.getElementById('totalWithdrawals').textContent = userData.totalWithdrawals;
-                                    document.getElementById('pendingWithdrawals').textContent = userData.pendingWithdrawals;
-                                } else {
-                                    // User data not found
-                                    console.log("User data not found");
-                                }
-                            })
-                            .catch(function (error) {
-                                // Handle any database read errors
-                                console.error("Error fetching user data: " + error.message);
-                            });
-                    } else {
-                        // User is not signed in
-                        console.log("User is not signed in.");
-                    }
-                });
+// Check if a user is authenticated
+firebase.auth().onAuthStateChanged(async function (user) {
+    if (user) {
+        // User is signed in, fetch the user's data from the database
+        const uid = user.uid;
+        const databaseRef = firebase.database().ref('users/' + uid);
+
+        try {
+            const snapshot = await databaseRef.once('value');
+            const userData = snapshot.val();
+
+            if (userData) {
+                // Update the dashboard page with user data
+                document.getElementById('bitcoin').textContent = userData.bitcoin;
+                document.getElementById('ethereum').textContent = userData.ethereum;
+                document.getElementById('bch').textContent = userData.bch;
+                document.getElementById('ltc').textContent = userData.ltc;
+
+                // Fetch the BTC to USD conversion rate
+                const btcToUSD = await getBTCtoUSD();
+
+                if (btcToUSD !== null) {
+                    const availableBalanceBTC = userData.availableBalance;
+                    const availableBalanceUSD = availableBalanceBTC * btcToUSD;
+                    document.getElementById('availableBalance').textContent = availableBalanceUSD.toFixed(2);
+                } else {
+                    // Handle the case when the BTC to USD conversion rate is not available
+                    console.log('BTC to USD conversion rate not available.');
+                }
+
+                // Update other fields
+                document.getElementById('totalBalance').textContent = userData.totalBalance;
+                document.getElementById('totalWithdrawals').textContent = userData.totalWithdrawals;
+                document.getElementById('pendingWithdrawals').textContent = userData.pendingWithdrawals;
+            } else {
+                // User data not found
+                console.log("User data not found");
+            }
+        } catch (error) {
+            // Handle any database read errors
+            console.error("Error fetching user data: " + error.message);
+        }
+    } else {
+        // User is not signed in
+        console.log("User is not signed in.");
+    }
+});
             </script>
             <script type="text/javascript">
                 var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
