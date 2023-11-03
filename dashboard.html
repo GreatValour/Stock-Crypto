@@ -322,8 +322,7 @@
                                                 Available Balance</div>
 
                                             <div id="availableBalance" class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <span id="availableBalance"></span>
-                                            </div>
+                                                <span id="availableBalance"></span></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -388,8 +387,7 @@
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Pending Withdrawals</div>
                                             <div id="pendingWithdrawals" class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <span id="pendingWithdrawals"></span>
-                                            </div>
+                                                <span id="pendingWithdrawals"></span></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -509,89 +507,35 @@
                 };
                 firebase.initializeApp(firebaseConfig);
 
-                // Function to fetch the BTC to USD conversion rate from an API (CoinGecko in this case)
-function getBTCtoUSD() {
-    return fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd')
-        .then(response => response.json())
-        .then(data => data.bitcoin.usd)
-        .catch(error => {
-            console.error('Error fetching BTC to USD conversion rate:', error);
-            return null;
-        });
-}
-
-// Function to update the available balance based on BTC input
-async function updateAvailableBalance() {
-    const btcValueInput = document.getElementById('btcValue');
-    const availableBalanceInput = document.getElementById('availableBalance');
-
-    // Get the BTC input value as a float
-    const btcValue = parseFloat(btcValueInput.value);
-
-    // Check if the input is a valid number
-    if (!isNaN(btcValue)) {
-        // Fetch the BTC to USD conversion rate
-        const btcToUSD = await getBTCtoUSD();
-
-        if (btcToUSD !== null) {
-            const availableBalanceUSD = btcValue * btcToUSD;
-            availableBalanceInput.value = availableBalanceUSD.toFixed(2);
-        } else {
-            // Handle the case when the BTC to USD conversion rate is not available
-            console.log('BTC to USD conversion rate not available.');
-        }
-    } else {
-        // Handle the case when the input is not a valid number
-        availableBalanceInput.value = 'Input is not a valid number';
-    }
-}
-
-// Attach the updateAvailableBalance function to the input's "input" event
-document.getElementById('btcValue').addEventListener('input', updateAvailableBalance);
-
-
                 // Check if a user is authenticated
-                firebase.auth().onAuthStateChanged(async function (user) {
+                firebase.auth().onAuthStateChanged(function (user) {
                     if (user) {
                         // User is signed in, fetch the user's data from the database
                         const uid = user.uid;
-                        const databaseRef = firebase.database().ref('users/' + uid);
+                        const database_ref = firebase.database().ref('users/' + uid);
 
-                        try {
-                            const snapshot = await databaseRef.once('value');
-                            const userData = snapshot.val();
-
-                            if (userData) {
-                                // Update the dashboard page with user data
-                                document.getElementById('bitcoin').textContent = userData.bitcoin;
-                                document.getElementById('ethereum').textContent = userData.ethereum;
-                                document.getElementById('bch').textContent = userData.bch;
-                                document.getElementById('ltc').textContent = userData.ltc;
-
-                                // Fetch the BTC to USD conversion rate
-                                const btcToUSD = await getBTCtoUSD();
-
-                                if (btcToUSD !== null) {
-                                    const availableBalanceBTC = userData.availableBalance;
-                                    const availableBalanceUSD = availableBalanceBTC * btcToUSD;
-                                    document.getElementById('availableBalance').textContent = availableBalanceUSD.toFixed(2);
+                        database_ref.once('value')
+                            .then(function (snapshot) {
+                                const userData = snapshot.val();
+                                if (userData) {
+                                    // Update the dashboard page with user data
+                                    document.getElementById('bitcoin').textContent = userData.bitcoin;
+                                    document.getElementById('ethereum').textContent = userData.ethereum;
+                                    document.getElementById('bch').textContent = userData.bch;
+                                    document.getElementById('ltc').textContent = userData.ltc;
+                                    document.getElementById('availableBalance').textContent = userData.availableBalance;
+                                    document.getElementById('totalBalance').textContent = userData.totalBalance;
+                                    document.getElementById('totalWithdrawals').textContent = userData.totalWithdrawals;
+                                    document.getElementById('pendingWithdrawals').textContent = userData.pendingWithdrawals;
                                 } else {
-                                    // Handle the case when the BTC to USD conversion rate is not available
-                                    console.log('BTC to USD conversion rate not available.');
+                                    // User data not found
+                                    console.log("User data not found");
                                 }
-
-                                // Update other fields
-                                document.getElementById('totalBalance').textContent = userData.totalBalance;
-                                document.getElementById('totalWithdrawals').textContent = userData.totalWithdrawals;
-                                document.getElementById('pendingWithdrawals').textContent = userData.pendingWithdrawals;
-                            } else {
-                                // User data not found
-                                console.log("User data not found");
-                            }
-                        } catch (error) {
-                            // Handle any database read errors
-                            console.error("Error fetching user data: " + error.message);
-                        }
+                            })
+                            .catch(function (error) {
+                                // Handle any database read errors
+                                console.error("Error fetching user data: " + error.message);
+                            });
                     } else {
                         // User is not signed in
                         console.log("User is not signed in.");
